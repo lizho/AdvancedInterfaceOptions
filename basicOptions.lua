@@ -165,7 +165,7 @@ local function newCheckbox(parent, cvar, getValue, setValue, label, description)
 	local cvarTable = addon.hiddenOptions[cvar]
 	if cvarTable then
 		label = cvarTable['prettyName'] or cvar
-		description = _G[cvarTable['description']] or cvarTable['description'] or 'No description'
+		description = _G[cvarTable['description']] or cvarTable['description'] or _T'No description'
 	else
 		label = label or '[PH] Label'
 		description = description or '[PH] Description'
@@ -317,7 +317,7 @@ subText:SetJustifyV('TOP')
 subText:SetJustifyH('LEFT')
 subText:SetPoint('TOPLEFT', title, 'BOTTOMLEFT', 0, -8)
 subText:SetPoint('RIGHT', -32, 0)
-subText:SetText('These options allow you to toggle various options that have been removed from the game in Legion.')
+subText:SetText(_T'These options allow you to toggle various options that have been removed from the game in Legion.')
 
 local playerTitles = newCheckbox(AIO, 'UnitNamePlayerPVPTitle')
 local playerGuilds = newCheckbox(AIO, 'UnitNamePlayerGuild')
@@ -346,7 +346,7 @@ local enableWoWMouse = newCheckbox(AIO, 'enableWoWMouse')
 
 local questSortingLabel = AIO:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
 questSortingLabel:SetPoint('TOPLEFT', enableWoWMouse, 'BOTTOMLEFT', 0, 0)
-questSortingLabel:SetText('Select quest sorting mode:')
+questSortingLabel:SetText(_T'Select quest sorting mode:')
 
 local questSortingDropdown = CreateFrame("Frame", "AIOQuestSorting", AIO, "UIDropDownMenuTemplate")
 questSortingDropdown:SetPoint("TOPLEFT", questSortingLabel, "BOTTOMLEFT", -16, -10)
@@ -376,7 +376,7 @@ Widgets[ questSortingDropdown ] = 'trackQuestSorting'
 
 local actionCamModeLabel = AIO:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
 actionCamModeLabel:SetPoint('TOPLEFT', questSortingDropdown, 'BOTTOMLEFT', 16, 0)
-actionCamModeLabel:SetText('Select Action Cam mode:')
+actionCamModeLabel:SetText(_T'Select Action Cam mode:')
 
 local actionCamModeDropdown = CreateFrame("Frame", "AIOActionCamMode", AIO, "UIDropDownMenuTemplate")
 actionCamModeDropdown:SetPoint("TOPLEFT", actionCamModeLabel, "BOTTOMLEFT", -16, -10)
@@ -430,8 +430,8 @@ local enforceBox = newCheckbox(AIO, nil,
 			end
 		end
 	end,
-	'Enforce Settings on Startup',
-	"Reapplies all settings when you log in or change characters.\n\nCheck this if your settings aren't being saved between sessions.")
+	_T'Enforce Settings on Startup',
+	_T"Reapplies all settings when you log in or change characters.\n\nCheck this if your settings aren't being saved between sessions.")
 enforceBox:SetPoint("LEFT", title, "RIGHT", 5, 0)
 
 -- Button to reset all of our settings back to their defaults
@@ -467,7 +467,7 @@ StaticPopupDialogs['AIO_RESET_EVERYTHING'] = {
 
 local resetButton = CreateFrame('button', nil, AIO, 'UIPanelButtonTemplate')
 resetButton:SetSize(120, 20)
-resetButton:SetText("Load Defaults")
+resetButton:SetText(_T"Load Defaults")
 resetButton:SetPoint('BOTTOMRIGHT', -10, 10)
 resetButton:SetScript('OnClick', function(self)
 	StaticPopup_Show('AIO_RESET_EVERYTHING')
@@ -494,7 +494,7 @@ SubText_Chat:SetJustifyV('TOP')
 SubText_Chat:SetJustifyH('LEFT')
 SubText_Chat:SetPoint('TOPLEFT', Title_Chat, 'BOTTOMLEFT', 0, -8)
 SubText_Chat:SetPoint('RIGHT', -32, 0)
-SubText_Chat:SetText('These options allow you to modify various chat settings that are no longer part of the default UI.')
+SubText_Chat:SetText(_T'These options allow you to modify various chat settings that are no longer part of the default UI.')
 
 local chatMouseScroll = newCheckbox(AIO_Chat, 'chatMouseScroll')
 local chatDelay = newCheckbox(AIO_Chat, 'removeChatDelay')
@@ -758,7 +758,7 @@ SubText_NP:SetJustifyV('TOP')
 SubText_NP:SetJustifyH('LEFT')
 SubText_NP:SetPoint('TOPLEFT', Title_NP, 'BOTTOMLEFT', 0, -8)
 SubText_NP:SetPoint('RIGHT', -32, 0)
-SubText_NP:SetText('These options allow you to modify Nameplate Options.')
+SubText_NP:SetText(_T'These options allow you to modify Nameplate Options.')
 
 local nameplateDistance = newSlider(AIO_NP, 'nameplateMaxDistance', 10, 100)
 nameplateDistance:SetPoint('TOPLEFT', SubText_NP, 'BOTTOMLEFT', 0, -20)
@@ -794,7 +794,7 @@ SubText_C:SetJustifyV('TOP')
 SubText_C:SetJustifyH('LEFT')
 SubText_C:SetPoint('TOPLEFT', Title_C, 'BOTTOMLEFT', 0, -8)
 SubText_C:SetPoint('RIGHT', -32, 0)
-SubText_C:SetText('These options allow you to modify Combat Options.')
+SubText_C:SetText(_T'These options allow you to modify Combat Options.')
 
 local stopAutoAttack = newCheckbox(AIO_C, 'stopAutoAttackOnTargetChange')
 stopAutoAttack:SetPoint("TOPLEFT", SubText_C, "BOTTOMLEFT", 0, -8)
@@ -826,7 +826,7 @@ SlashCmdList.AIO = function(msg)
 		InterfaceOptionsFrame_OpenToCategory(addonName)
 		InterfaceOptionsFrame_OpenToCategory(addonName)
 	else
-		DEFAULT_CHAT_FRAME:AddMessage(format("%s: Can't modify interface options in combat", addonName))
+		DEFAULT_CHAT_FRAME:AddMessage(format(_T"%s: Can't modify interface options in combat", addonName))
 	end
 end
 SLASH_AIO1 = "/aio"
