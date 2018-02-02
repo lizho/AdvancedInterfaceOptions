@@ -218,7 +218,7 @@ local function newSlider(parent, cvar, minRange, maxRange, stepSize, getValue, s
 	local description = cvarTable['description'] or ''
 
 	local _, defaultValue = GetCVarInfo(cvar)
-	description = description .. '\n\nDefault Value: ' .. (defaultValue or '')
+	description = description .. _T'\n\nDefault Value: ' .. (defaultValue or '')
 	local slider = CreateFrame('Slider', 'AIOSlider' .. cvar, parent, 'OptionsSliderTemplate')
 
 	slider.cvar = cvar
@@ -354,7 +354,7 @@ questSortingDropdown.initialize = function(dropdown)
 	local sortMode = { "top", "proximity" }
 	for i, mode in next, sortMode do
 		local info = UIDropDownMenu_CreateInfo()
-		info.text = sortMode[i]
+		info.text = _T(sortMode[i])
 		info.value = sortMode[i]
 		info.func = function(self)
 			addon:SetCVar("trackQuestSorting", self.value)
@@ -384,7 +384,7 @@ actionCamModeDropdown.initialize = function(dropdown)
 	local sortMode = { "basic", "full", "off", "default" }
 	for i, mode in next, sortMode do
 		local info = UIDropDownMenu_CreateInfo()
-		info.text = sortMode[i]
+		info.text = _T(sortMode[i])
 		info.value = sortMode[i]
 		info.func = function(self)
 			ConsoleExec("actioncam "..self.value)
@@ -436,12 +436,14 @@ enforceBox:SetPoint("LEFT", title, "RIGHT", 5, 0)
 
 -- Button to reset all of our settings back to their defaults
 StaticPopupDialogs['AIO_RESET_EVERYTHING'] = {
-	text = 'Type "IRREVERSIBLE" into the text box to reset all CVars to their default settings',
+	text = _T'Type "IRREVERSIBLE" into the text box to reset all CVars to their default settings',
 	button1 = 'Confirm',
 	button2 = 'Cancel',
 	hasEditBox = true,
 	OnShow = function(self)
 		self.button1:SetEnabled(false)
+		self.button1:SetText(_T'Confirm')
+		self.button2:SetText(_T'Cancel')
 	end,
 	EditBoxOnTextChanged = function(self, data)
 		self:GetParent().button1:SetEnabled(self:GetText():lower() == 'irreversible')
@@ -450,7 +452,7 @@ StaticPopupDialogs['AIO_RESET_EVERYTHING'] = {
 		for cvar in pairs(addon.hiddenOptions) do
 			local current, default = GetCVarInfo(cvar)
 			if current ~= default then
-				print(format('|cffaaaaff%s|r reset from |cffffaaaa%s|r to |cffaaffaa%s|r', tostring(cvar), tostring(current), tostring(default)))
+				print(format(_T'|cffaaaaff%s|r reset from |cffffaaaa%s|r to |cffaaffaa%s|r', tostring(cvar), tostring(current), tostring(default)))
 				addon:SetCVar(cvar, default)
 			end
 		end
@@ -478,7 +480,7 @@ end)
 local AIO_Chat = CreateFrame('Frame', nil, InterfaceOptionsFramePanelContainer)
 AIO_Chat:Hide()
 AIO_Chat:SetAllPoints()
-AIO_Chat.name = "Chat"
+AIO_Chat.name = _T"Chat"
 AIO_Chat.parent = addonName
 
 local Title_Chat = AIO_Chat:CreateFontString(nil, 'ARTWORK', 'GameFontNormalLarge')
@@ -742,7 +744,7 @@ stTextDisplay:HookScript("OnLeave", GameTooltip_Hide)
 local AIO_NP = CreateFrame('Frame', nil, InterfaceOptionsFramePanelContainer)
 AIO_NP:Hide()
 AIO_NP:SetAllPoints()
-AIO_NP.name = "Nameplates"
+AIO_NP.name = _T"Nameplates"
 AIO_NP.parent = addonName
 
 local Title_NP = AIO_NP:CreateFontString(nil, 'ARTWORK', 'GameFontNormalLarge')
@@ -778,7 +780,7 @@ nameplateColorFriendly:SetPoint("TOPLEFT", nameplateAtBase, "BOTTOMLEFT", 0, -8)
 local AIO_C = CreateFrame('Frame', nil, InterfaceOptionsFramePanelContainer)
 AIO_C:Hide()
 AIO_C:SetAllPoints()
-AIO_C.name = "Combat"
+AIO_C.name = _T"Combat"
 AIO_C.parent = addonName
 
 local Title_C = AIO_C:CreateFontString(nil, 'ARTWORK', 'GameFontNormalLarge')

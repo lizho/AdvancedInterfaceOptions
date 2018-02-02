@@ -80,7 +80,7 @@ end
 local OptionsPanel = CreateFrame('Frame', nil, InterfaceOptionsFramePanelContainer)
 OptionsPanel:Hide()
 OptionsPanel:SetAllPoints()
-OptionsPanel.name = "CVar Browser"
+OptionsPanel.name = _T"CVar Browser"
 OptionsPanel.parent = addonName
 
 local Title = OptionsPanel:CreateFontString(nil, 'ARTWORK', 'GameFontNormalLarge')
@@ -96,7 +96,7 @@ SubText:SetJustifyV('TOP')
 SubText:SetJustifyH('LEFT')
 SubText:SetPoint('TOPLEFT', Title, 'BOTTOMLEFT', 0, -8)
 SubText:SetPoint('RIGHT', -32, 0)
-SubText:SetText('These options allow you to modify various CVars within the game.')
+SubText:SetText(_T'These options allow you to modify various CVars within the game.')
 
 InterfaceOptions_AddCategory(OptionsPanel, addonName)
 
@@ -285,16 +285,16 @@ function E:PLAYER_LOGIN()
 				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")
 				local cvarTable = CVarList[self.value]
 				local _, defaultValue = GetCVarInfo(self.value)
-				GameTooltip:AddLine(cvarTable['prettyName'] or self.value, nil, nil, nil, false)
+				GameTooltip:AddLine(_T(cvarTable['prettyName']) or self.value, nil, nil, nil, false)
 				GameTooltip:AddLine(" ")
 				if cvarTable['description'] then --and _G[ cvarTable['description'] ] then
-					GameTooltip:AddLine(cvarTable['description'], 1, 1, 1, true)
+					GameTooltip:AddLine(_T(cvarTable['description']), 1, 1, 1, true)
 				end
-				GameTooltip:AddDoubleLine("Default Value:", defaultValue, 0.2, 1, 0.6, 0.2, 1, 0.6)
+				GameTooltip:AddDoubleLine(_T"Default Value:", defaultValue, 0.2, 1, 0.6, 0.2, 1, 0.6)
 
 				local modifiedBy = AdvancedInterfaceOptionsSaved.ModifiedCVars[ self.value:lower() ]
 				if modifiedBy then
-					GameTooltip:AddDoubleLine("Last Modified By:", modifiedBy, 1, 0, 0, 1, 0, 0)
+					GameTooltip:AddDoubleLine(_T"Last Modified By:", modifiedBy, 1, 0, 0, 1, 0, 0)
 				end
 
 				GameTooltip:Show()

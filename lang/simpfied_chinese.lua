@@ -7,52 +7,93 @@ local text_table = {
     ["These options allow you to toggle various options that have been removed from the game in Legion."] =
     "这些选项可以让你配置在《军团再临》中被移除的游戏选项。",
     ["Select quest sorting mode:"] =
-    nil,
+    "任务追踪排序方式：",
+    ["top"] = 
+    "按接受时间",
+    ["proximity"] =
+    "按距离",
     ["Select Action Cam mode:"] =
-    nil,
+    "镜头跟随方式：",
+    ["basic"] =
+    "基本",
+    ["full"] =
+    "完全",
+    ["off"] =
+    "关闭",
+    ["default"] =
+    "默认",
     ["Enforce Settings on Startup"] =
-    nil,
+    "启动时强制加载设置",
     ["Reapplies all settings when you log in or change characters.\n\nCheck this if your settings aren't being saved between sessions."] =
-    nil,
+    "上线时立即应用一次设置。\n\n在设置未能保存时选中此项。",
     ["Load Defaults"] =
     "恢复默认",
+    ["Type \"IRREVERSIBLE\" into the text box to reset all CVars to their default settings"] =
+    "在框中输入“IRREVERSIBLE”来确认重置所有CVars设置。",
+    ["Confirm"] =
+    "确定",
+    ["Cancel"] =
+    "取消",
+    ["|cffaaaaff%s|r reset from |cffffaaaa%s|r to |cffaaffaa%s|r"] =
+    "|cffaaaaff%s|r已由|cffffaaaa%s|r重置为|cffaaffaa%s|r",
+    ["Chat"] =
+    "社交",
     ["These options allow you to modify various chat settings that are no longer part of the default UI."] =
-    nil,
+    "这些选项可以让你更改从默认界面中移除的社交设置。",
     ["These options allow you to modify Nameplate Options."] =
-    nil,
+    "这些选项可以让你更改姓名板设置",
+    ["Combat"] =
+    "战斗",
     ["These options allow you to modify Combat Options."] =
-    nil,
+    "这些选项可以让你更改战斗设置。",
     ["%s: Can't modify interface options in combat"] =
     nil,
+    [" (Target)"] =
+    "（目标）",
+    [" (Self)"] =
+    "（自己）",
+    ["Nameplates"] =
+    "姓名板",
+    ["\n\nDefault Value: "] =
+    "\n\n默认值：",
+    -- browser.lua
+    ["CVar Browser"] =
+    "全部CVar设置",
+    ["These options allow you to modify various CVars within the game."] =
+    "这些选项让你可以更改游戏中的所有CVar值。",
+    ["Default Value:"] =
+    "默认值：",
+    ["Last Modified By:"] =
+    "上次更改者：",
     -- cvars.lua
     ["0 = 32x32, 1 = 48x48, 2 = 64x64, -1 = autodetect"] =
-    nil,
+    "0 = 32x32，1 = 48x48，2 = 64x64，-1 = 自适应",
     ["0 = Overlapping - 1 = Stacking"] =
-    nil,
+    "0 = 重叠 - 1 = 堆叠",
     ["A multiplier for the default UI scale. -1=determine based on system/monitor DPI, 0.5-2.0=multiplier to use when calculating UI scale. Only applied when useUIScale is 0."] =
-    nil,
+    "界面缩放倍数。-1=基于系统DPI，0.5-2.0=缩放倍数。仅在useUIScale为0时生效。",
     ["A simple bitfield for what languages we want to search in."] =
     nil,
     ["Allow an active model to be reloaded when a new version is detected in the bin folder. If this is disabled, the model data will only be refreshed after all game objects using the model are deleted"] =
-    nil,
+    "允许热加载模型。",
     ["Allow D3D9 to have texture backing to decrease load times and increase the chance of an out of memory crash"] =
     nil,
     ["Alpha multiplier of nameplates for occluded targets"] =
-    nil,
+    "姓名板透明度。",
     ["Alpha value to animate to when player moves with windowed world map open"] =
-    nil,
+    "当玩家移动时，地图窗口的透明度。",
     ["Always Compare Items"] =
-    nil,
+    "自动装备对比。",
     ["Always Highlight your character"] =
-    nil,
+    "突出显示你的角色。",
     ["Always Highlight your character in Battlegrounds"] =
-    nil,
+    "在战场中突出显示你的角色。",
     ["Always Highlight your character in Raids"] =
-    nil,
+    "在团队中突出显示你的角色。",
     ["Always show friendly NPC's nameplates"] =
-    nil,
+    "显示友方NPC姓名板。",
     ["Always show item comparison tooltips"] =
-    nil,
+    "自动显示装备对比窗口。",
     ["Always Show Nameplates"] =
     nil,
     ["Always show personal nameplate"] =
@@ -142,9 +183,9 @@ local text_table = {
     ["Character component unlit/emissive"] =
     nil,
     ["Class color for friendly nameplates"] =
-    nil,
+    "友方姓名板显示为职业颜色。",
     ["Class color friendly nameplates"] =
-    nil,
+    "友方姓名板颜色",
     ["Colors raid frames with the class color"] =
     nil,
     ["constrain window aspect"] =
@@ -168,7 +209,7 @@ local text_table = {
     ["Detail doodad instancing"] =
     nil,
     ["Determines how far ahead of the \'end of a spell\' start-recovery spell system can be, before allowing spell request to be sent to the server. Ie this controls the built-in lag for the ability queuing system. Ideally, you\'ll want to set this to your in-game latency."] =
-    nil,
+    "向服务器发送施法请求之前，“上一次法术结束”的前置冗余量。它决定了施法系统的内置延迟。建议设置为与游戏延迟相同的值。",
     ["Determines if the team color circles are visible while spectating or commentating a wargame"] =
     nil,
     ["Determines if units related to a quest display an indicator on the ground"] =
@@ -176,9 +217,9 @@ local text_table = {
     ["Determines the alpha of the personal nameplate after no visibility conditions are met (during the period of time specified by NameplatePersonalHideDelaySeconds)."] =
     nil,
     ["Directional damage numbers movement scale (disabled = no directional numbers)"] =
-    nil,
+    "伤害文字按斜向滚动，不选则向正上方滚动。",
     ["Directional Scale"] =
-    nil,
+    "斜向滚动",
     ["Disable automatically selecting a realm on login"] =
     nil,
     ["DISABLED FOR 7.0.3 - Character component specular highlights"] =
@@ -200,7 +241,7 @@ local text_table = {
     ["Distance threshold to active smooth unit phasing."] =
     nil,
     ["Do not filter buffs or debuffs at all on targets"] =
-    nil,
+    "显示目标的全部增益/减益图标。",
     ["Do not flash your screen red when you are low on health."] =
     nil,
     ["Doodad level of detail distance"] =
@@ -406,13 +447,13 @@ local text_table = {
     ["Name of Battle.net portal to use"] =
     nil,
     ["Nameplate at Base"] =
-    nil,
+    "底部姓名板",
     ["Nameplate class resource overlay mode. 0=self, 1=target"] =
     nil,
     ["Nameplate Class Resource Top Inset"] =
     nil,
     ["Nameplate Distance"] =
-    nil,
+    "姓名板距离",
     ["Nameplate Global Scale"] =
     nil,
     ["Nameplate Horizontal Scale"] =
@@ -470,7 +511,7 @@ local text_table = {
     ["Near clip plane distance"] =
     nil,
     ["No Debuff Filter on Target"] =
-    nil,
+    "不滤除目标的减益图标",
     ["No longer used"] =
     nil,
     ["NPC will round corners on ground paths"] =
@@ -504,7 +545,7 @@ local text_table = {
     ["play footstep sounds"] =
     nil,
     ["Position other nameplates at the base, rather than overhead. 2=under unit, 0=over unit"] =
-    nil,
+    "使他人的姓名板在脚底显示，而非头顶。",
     ["prefer which fullscreen mode for toggle"] =
     nil,
     ["Preload all local racial models into memory"] =
@@ -754,7 +795,7 @@ local text_table = {
     ["The max alpha of nameplates."] =
     nil,
     ["The max distance to show nameplates."] =
-    nil,
+    "显示该范围内的姓名板",
     ["The max distance to show the target nameplate when the target is behind the camera."] =
     nil,
     ["The max scale of nameplates."] =
@@ -778,7 +819,7 @@ local text_table = {
     ["The player stat selected in the right dropdown"] =
     nil,
     ["The scale of in-world damage numbers, xp gain, artifact gains, etc"] =
-    nil,
+    "缩放全部滚动文字，包括伤害数字、获得经验等。",
     ["The scale of the selected nameplate."] =
     nil,
     ["The scale of the self nameplate."] =
@@ -886,7 +927,7 @@ local text_table = {
     ["Whether or not the battlefield minimap is shown"] =
     nil,
     ["Whether or not the client loads alternate data"] =
-    nil,
+    "是否使用定制版客户端。",
     ["Whether or not the UI shows Lua warnings"] =
     nil,
     ["Whether or not the world map has been toggled to smaller size"] =
@@ -962,7 +1003,7 @@ local text_table = {
     ["World maximum texture mip level"] =
     nil,
     ["World Text Scale"] =
-    nil,
+    "全局文字缩放",
 }
 
 lang_zhCN = text_table
